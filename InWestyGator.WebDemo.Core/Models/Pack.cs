@@ -12,7 +12,7 @@ namespace InWestyGator.WebDemo.Core.Models
         [Key]
         [JsonIgnore]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
         [Required]
         public string Id { get; set; }
@@ -33,6 +33,10 @@ namespace InWestyGator.WebDemo.Core.Models
 
         [JsonIgnore]
         public virtual IList<Pack> Children { get; set; }
+
+        [JsonIgnore]
+        [ForeignKey("Parent")]
+        public int? ParentNumber { get; set; }
 
         [JsonIgnore]
         public string ParentPackId => Parent?.Id;

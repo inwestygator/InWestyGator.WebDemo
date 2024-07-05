@@ -19,7 +19,7 @@ namespace InWestyGator.WebDemo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Get([FromQuery] string id)
         {
             var result = await _packService.GetPackWithHierarchyAsync(id);
             if (result == null || !result.Any())

@@ -22,9 +22,9 @@ namespace InWestyGator.WebDemo.DataAccess.Configurations
                 .IsRequired();
 
             // Handling the self-referencing relationship
-            builder.HasMany(p => p.Children)
-                .WithOne(p => p.Parent)
-                .HasForeignKey(pa => pa.Number)
+            builder.HasOne(p => p.Parent)
+                .WithMany(p => p.Children)
+                .HasForeignKey(c => c.ParentNumber)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Ignore the ChildPackIds collection for EF Core mapping
