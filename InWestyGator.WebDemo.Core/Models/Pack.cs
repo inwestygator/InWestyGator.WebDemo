@@ -35,13 +35,6 @@ namespace InWestyGator.WebDemo.Core.Models
         public virtual IList<Pack> Children { get; set; }
 
         [JsonIgnore]
-        [ForeignKey("Parent")]
-        public int? ParentNumber { get; set; }
-
-        [JsonIgnore]
-        public string ParentPackId => Parent?.Id;
-
-        [JsonIgnore]
-        public virtual Pack Parent { get; set; }
+        public virtual IList<Pack> Parents { get; set; }
     }
 }

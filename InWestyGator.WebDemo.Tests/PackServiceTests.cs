@@ -29,7 +29,7 @@ namespace InWestyGator.WebDemo.Tests.Services
             var rootPack = new Pack { Id = "1", PackName = "Root Pack" };
             var childPack = new Pack { Id = "2", PackName = "Child Pack" };
             rootPack.Children = new List<Pack> { childPack };
-            childPack.Parent = rootPack;
+            childPack.Parents = new List<Pack> { rootPack };
 
             _packRepositoryMock.Setup(repo => repo.GetByIdAsync("1"))
                 .ReturnsAsync(rootPack);
@@ -56,8 +56,8 @@ namespace InWestyGator.WebDemo.Tests.Services
             var grandChildPack = new Pack { Id = "3", PackName = "Grandchild Pack" };
             rootPack.Children = new List<Pack> { childPack };
             childPack.Children = new List<Pack> { grandChildPack };
-            childPack.Parent = rootPack;
-            grandChildPack.Parent = childPack;
+            childPack.Parents = new List<Pack> { rootPack };
+            grandChildPack.Parents = new List<Pack> { childPack };
 
             _packRepositoryMock.Setup(repo => repo.GetByIdAsync("1"))
                 .ReturnsAsync(rootPack);

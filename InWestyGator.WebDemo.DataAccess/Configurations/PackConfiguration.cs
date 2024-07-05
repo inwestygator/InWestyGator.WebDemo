@@ -22,14 +22,11 @@ namespace InWestyGator.WebDemo.DataAccess.Configurations
                 .IsRequired();
 
             // Handling the self-referencing relationship
-            builder.HasOne(p => p.Parent)
-                .WithMany(p => p.Children)
-                .HasForeignKey(c => c.ParentNumber)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasMany(p => p.Parents)
+                .WithMany(p => p.Children);
 
             // Ignore the ChildPackIds collection for EF Core mapping
             builder.Ignore(p => p.ChildPackIds);
-            builder.Ignore(p => p.ParentPackId);
         }
     }
 }

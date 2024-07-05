@@ -66,7 +66,7 @@ namespace InWestyGator.WebDemo.DataAccess.Repositories
         {
             return _webDbContext.Packs
                 .Include(p => p.Children)
-                .Include(p => p.Parent);
+                .Include(p => p.Parents);
         }
     }
 }
