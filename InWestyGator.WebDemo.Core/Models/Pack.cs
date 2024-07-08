@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text.Json.Serialization;
 
 namespace InWestyGator.WebDemo.Core.Models
@@ -15,6 +13,7 @@ namespace InWestyGator.WebDemo.Core.Models
         public int? Number { get; set; }
 
         [Required]
+        [RegularExpression(@"^pack\..*$", ErrorMessage = "The Id must start with 'pack.'")]
         public string Id { get; set; }
 
         [Required]
